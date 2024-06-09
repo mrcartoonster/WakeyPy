@@ -1,7 +1,8 @@
-from rich.console import Console
-from wakepy import keep
+# -*- coding: utf-8 -*-
 import time
 
+from rich.console import Console
+from wakepy import keep
 
 console = Console()
 
@@ -9,7 +10,9 @@ console = Console()
 def do_something():
     """
     Running a simple subprocess to stay awake.
+
     :return:
+
     """
     with keep.presenting():
         while True:
@@ -21,5 +24,5 @@ def do_something():
 status = "[green]Press Ctrl-C to exit[/green]"
 
 
-with console.status(status, spinner='aesthetic'):
+with console.status(status, spinner="aesthetic"):
     do_something()

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import secrets
 import time
 
 import tomllib
@@ -29,26 +30,30 @@ def do_something():
             time.sleep(second)
 
 
-status = "[green]Press Ctrl-C to exit[/green]"
+status = " [green]Press Ctrl-C to exit[/green]"
 
 
-with console.status(status, spinner="dots"):
+def rando_dots():
+    return "dots" + str(secrets.choice(range(2, 9)))
+
+
+with console.status(status, spinner=rando_dots()):
     console.print(
         rf"""
-                           _
-                          | |
-        __        __ __ _ | | __ ___  _   _  _ __    _   _
-        \ \  /\  / // _` || |/ // _ \| | | || '_  \ | | | |
-         \ \/  \/ /| (_| ||   <|  __/| |_| || |_)  || |_| |
-          \__/\__/  \__,_||_|\_\\___| \__, || .___/  \__, |
-          {version}                      __/ || |       __| |
-                                      |___/ |_|      |___/
-         """,
-        style="magenta",
+                       _
+                      | |
+    __        __ __ _ | | __ ___  _   _  _ __    _   _
+    \ \  /\  / // _` || |/ // _ \| | | || '_  \ | | | |
+     \ \/  \/ /| (_| ||   <|  __/| |_| || |_)  || |_| |
+      \__/\__/  \__,_||_|\_\\___| \__, || .___/  \__, |
+      {version}                      __/ || |       __| |
+                                  |___/ |_|      |___/
+    """,
+        style="bold magenta",
     )
     console.print(
-        "[ ] System will continue running program\n"
-        "[ ] Presentation mode is on. Screensaver and Screenlock will be prevented.",
+        ":white_heavy_check_mark: System will continue running program\n"
+        ":white_heavy_check_mark: Presentation mode is on. Screensaver and Screenlock will be prevented.",
         style="green",
     )
     {do_something()}
